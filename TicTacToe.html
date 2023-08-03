@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>tic tac toe</title>
+</head>
+<body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .wrapper {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      gap: .5rem;
+      background: linear-gradient(to right, #3e1647f7, #1a3a4df7);
+      padding-top: 100px;
+    }
+    .container {
+      width: 600px;
+      height: 600px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+    }
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 100px;
+      font-weight: 700;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+    .box:nth-child(3n) {
+      border-right: none;
+    }
+    .box:nth-child(6) ~ .box {
+      border-bottom: none;
+    }
+    .restartBtn {
+      padding: 2.5rem 10rem;
+      border-radius: 15px;
+      color: gray;
+      outline: none;
+      font-size: 40px;
+      font-weight: 600;
+      font-family: Times New Roman;
+      text-transform: capitalize;
+      background: linear-gradient(to right, #3e1647f7, #1a3a4df7);
+    }
+    header {
+      position: absolute;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      background: rgba(0, 0, 0, .3);
+      height: 100px;
+      color: purple;
+      text-transform: capitalize;
+    }
+    #display-home {
+      text-decoration: none;
+      color: inherit;
+      background: #1a3a4df7;
+      padding: .5rem 1rem;
+      border-radius: 12px;
+    }
+  }
+</style>
+<header>
+  <h1 class="display">tic tac toe</h1>
+  <h1><a id="display-home" href="/">home</a></h1>
+</header>
+<div class="wrapper">
+  <div class="container">
+    <div class="box" id="0"></div>
+    <div class="box" id="1"></div>
+    <div class="box" id="2"></div>
+    <div class="box" id="3"></div>
+    <div class="box" id="4"></div>
+    <div class="box" id="5"></div>
+    <div class="box" id="6"></div>
+    <div class="box" id="7"></div>
+    <div class="box" id="8"></div>
+  </div>
+  <button class="restartBtn">restart</button>
+</div>
+<script>
+  const display = document.querySelector(".display")
+  const boxes = Array.from(document.querySelectorAll(".box"))
+  const restartBtn = document.querySelector(".restartBtn")
+  const X_text = "X"
+  const O_text = "O"
+  let currentPlayer = X_text
+  const spaces = Array(9).fill(null)
+  let gameOver = false
+  //document.querySelector(".display").addEventListener("click", displayClicked)
+
+  const startGame = () => {
+    boxes.forEach(box => box.addEventListener("click", boxClicked))
+  }
+  restartBtn.addEventListener("click", restart)
+
+  function boxClicked(e) {
+    if (gameOver) return
+    const id = e.target.id
+    if (!spaces[id]) {
+      spaces[id] = currentPlayer
+      e.target.innerText = currentPlayer
+      if (playerWon() !== false) {
+        display.innerText = `player ${currentPlayer} has won.`
+        const winningCombo = playerWon()
+        winningCombo.forEach(block => boxes[block].style.color = "lightgreen")
+      }
+      currentPlayer = currentPlayer === X_text ? O_text: X_text
+    }
+  }
+  const winningCombos = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ]
+  function playerWon() {
+    for (const condition of winningCombos) {
+      let [a,
+        b,
+        c] = condition
+      if (spaces[a] === currentPlayer && spaces[b] === currentPlayer && spaces[c] === currentPlayer) {
+        gameOver = true
+        return [a,
+          b,
+          c]
+      }
+    }
+    return false
+  }
+
+  function restart() {
+    display.innerText = "tic tac toe"
+    spaces.fill(null)
+    boxes.forEach(box => box.innerText = "")
+    currentPlayer = X_text
+    gameOver = false
+    boxes.forEach(box => box.style.color = "black")
+  }
+  startGame()
+</script>
+</body>
+</html>

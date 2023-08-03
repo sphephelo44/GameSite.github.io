@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: left;
+}
+body {
+  padding-top: 250px;
+}
+nav {
+  background: rgba(0,0,0.6);
+  color: #fff;
+  height: 250px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-transform: capitalize;
+}
+.site-name {
+  font-size: 35px;
+  color: #fff;
+}
+span {
+  color: pink;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+nav a {
+  text-decoration: none;
+  color: gray;
+  font-weight: bold;
+  font-size: 20px;
+}
+.login-btn {
+  background: rgb(179,89,157,.5);
+  padding: 1.5rem 2.5rem;
+  border-radius: 12px;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 6rem;
+}
+.client-info {
+  width: 500px;
+  height: 80px;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-size: 30px;
+}
+.client-info:nth-child(1) {
+  margin-top: 5rem;
+}
+.client-comment {
+  border: 1px solid black;
+  font-size: 20px;
+  border-radius: 15px;
+  padding: .5rem 1.5rem;
+}
+main {
+  margin: 2.5rem;
+  padding: 0rem 2.5rem 5rem 2.5rem;
+  box-shadow: 0px 0px 25px;
+  border-radius: 18px;
+}
+.submit-btn {
+  text-decoration: none;
+  color: inherit;
+  font-size: 50px;
+  text-transform: capitalize;
+  background: pink;
+  padding: 2.5rem 7rem;
+  border-radius: 15px;
+
+}
