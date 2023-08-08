@@ -4,9 +4,7 @@ const game_start = () => {
 document.querySelector(".restart-btn").addEventListener("click", restartGame)
 function btn_clicked(e) {
   const id = e.target.id
-  const game_choices = ["rock",
-    "paper",
-    "scissors"]
+  const game_choices = ["rock", "paper", "scissors"]
   const computer_choice = Math.floor(Math.random() * game_choices.length)
   document.querySelector("#player-display").innerText = `player:\t${id}`
   document.querySelector("#computer-display").innerText = `computer:\t${game_choices[computer_choice]}`

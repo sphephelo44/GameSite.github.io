@@ -9,8 +9,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 100px;
-  border: 5px solid blue;
 }
 header {
   height: 100px;
@@ -19,8 +17,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 0;
 }
 nav {
   display: flex;
@@ -44,4 +40,18 @@ nav a {
 }
 canvas {
   border: 1px solid black;
+  margin-top: 1.5rem;
+}
+#btns-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0rem;
+}
+.controls {
+  width: 100px;
+  height: 45px;
+  margin: .5rem;
+  border-radius: 15px;
 }
