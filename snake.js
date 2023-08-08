@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  alert(`this game is not complete\ndevelopment is still in progress`)
   const canvas = document.querySelector("canvas")
   const ctx = canvas.getContext("2d")
   const blockSize = 10
@@ -53,12 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (snakeX + blockSize > canvas.width || snakeX < 0) clearInterval(gameFps)
     if (snakeY + blockSize > canvas.height || snakeY < 0) clearInterval(gameFps)
     
-    for (let i = 0; i < snakeBody.length; i++) {
-      if (snakeX === snakeBody[i][0] || snakeY === snakeBody[i][1]) {
+   /* for (let i = 0; i < snakeBody.length; i++) {
+     if (snakeX === snakeBody[i][0] || snakeY === snakeBody[i][1]) {
         clearInterval(gameFps)
         console.log(`first: ${snakeBody[i][0]} second: ${snakeBody[i][1]}`)
       }
-    }
+    }*/
   }
 
   function snakeDirection(e) {
